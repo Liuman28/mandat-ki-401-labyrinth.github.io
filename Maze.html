@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Labyrinth Game</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="container">
+    <!-- Ліва панель: Налаштування гри -->
+    <div id="left-panel">
+      <h2>Налаштування</h2>
+      <label for="difficultySelect">Рівень складності:</label>
+      <select id="difficultySelect">
+        <option value="10">Легкий (10x10)</option>
+        <option value="20">Середній (20x20)</option>
+        <option value="30">Важкий (30x30)</option>
+        <option value="custom">Custom</option>
+      </select>
+      <!-- Якщо вибрано Custom, показати поле введення -->
+      <input type="number" id="customSize" placeholder="Введіть розмір" style="display:none;" min="5" max="100" value="25">
+      <label class="custom-checkbox">
+        <input type="checkbox" id="trapsToggle" checked>
+        <span class="checkmark"></span>
+        Використовувати пастки
+      </label>
+      <label class="custom-checkbox">
+        <input type="checkbox" id="timeToggle">
+        <span class="checkmark"></span>
+        Без часового обмеження
+      </label>
+      <label class="custom-checkbox">
+        <input type="checkbox" id="darkModeToggle">
+        <span class="checkmark"></span>
+        Лабіринт у темряві
+      </label>
+      <label class="custom-checkbox">
+        <input type="checkbox" id="multiLevelToggle">
+        <span class="checkmark"></span>
+        Режим кампанії
+      </label>
+      <label class="custom-checkbox">
+        <input type="checkbox" id="bacchanaliaToggle">
+        <span class="checkmark"></span>
+        Вакханалія
+      </label>
+      <button id="startBtn">Почати гру</button>
+    </div>
+
+    <!-- Центральна панель: Placeholder і контейнер для canvas та overlay -->
+    <div id="center-panel">
+      <div id="placeholder">Лабіринт</div>
+      <div id="gameContainer">
+        <canvas id="mazeCanvas" width="600" height="600"></canvas>
+        <div id="darkOverlay"></div>
+      </div>
+    </div>
+
+    <!-- Права панель: Статус гри та інформаційна іконка -->
+    <div id="right-panel">
+      <h2>Статус</h2>
+      <div id="status">
+        <span id="statusText"></span><br>
+        <span id="timerDisplay"></span>
+      </div>
+      <div id="infoIcon">?</div>
+      <div id="infoPopup">
+        <strong>Інформація про режими:</strong><br>
+        • <em>Часовий режим</em>: якщо вимкнено "Без часового обмеження", встановлюється таймер.<br>
+        • <em>Темрява</em>: при увімкненні лабіринт затемнюється, видно лише область навколо гравця.<br>
+        • <em>Кампанія</em>: рівні генеруються послідовно; для рівнів від середнього і вище фініш обирається випадково (20%-50% від max відстані).<br>
+        • <em>Вакханалія</em>: лабіринт перегенеровується кожну секунду, позиція гравця зберігається.<br>
+        • <em>Custom</em>: користувацький режим — введіть власний розмір поля.
+      </div>
+    </div>
+  </div>
+  <!-- Футер -->
+  <footer>
+    <p>© 2025 Labyrinth Game Mandat Liubomyr KI-401. Всі права захищені.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

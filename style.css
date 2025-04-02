@@ -1,0 +1,241 @@
+/* Загальний стиль сторінки */
+body {
+  margin: 0;
+  background: #1c1f26;
+  color: #e0e0e0;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  height: 100vh;
+  position: relative;
+}
+
+/* Контейнер для трьох панелей */
+#container {
+  display: flex;
+  flex: 1;
+}
+
+/* Ліва та права панелі */
+#left-panel, #right-panel {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #2b2f38;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+/* Центральна панель */
+#center-panel {
+  flex: 2;
+  background: #1c1f26;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Ліва панель */
+#left-panel {
+  text-align: left;
+  border-right: 1px solid #555;
+}
+
+/* Права панель */
+#right-panel {
+  text-align: right;
+  border-left: 1px solid #555;
+  font-size: 32px;
+}
+
+/* Заголовки */
+#left-panel h2, #right-panel h2 {
+  margin-top: 0;
+  color: #ffcc00;
+}
+
+/* Елементи керування в лівій панелі */
+#left-panel select,
+#left-panel button,
+#left-panel input[type="number"] {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 25px;
+  background: #3a3f4b;
+  color: #e0e0e0;
+  width: 100%;
+  transition: background 0.3s;
+  box-sizing: border-box;
+}
+
+#left-panel button {
+  background: #ffcc00;
+  color: #1c1f26;
+  cursor: pointer;
+  width: auto;
+}
+
+#left-panel button:hover {
+  background: #e6b800;
+}
+
+/* Кастомні чекбокси */
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 25px;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.custom-checkbox .checkmark {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  background-color: #3a3f4b;
+  border: 2px solid #ffcc00;
+  border-radius: 4px;
+  position: relative;
+  margin-right: 8px;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.custom-checkbox:hover .checkmark {
+  border-color: #e6b800;
+}
+
+.custom-checkbox .checkmark::before {
+  content: "";
+  position: absolute;
+  display: none;
+  top: 2px;
+  left: 6px;
+  width: 3px;
+  height: 8px;
+  border: solid #ffcc00;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkmark::before {
+  display: block;
+}
+
+/* Placeholder */
+#placeholder {
+  font-size: clamp(32px, 6vw, 72px);
+  font-weight: 700;
+  color: #ffcc00;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+  background: rgba(28,31,38,0.8);
+  border: 2px solid #ffcc00;
+  border-radius: 8px;
+  padding: 0.5em 1em;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  max-width: 90%;
+}
+
+/* Контейнер для canvas та overlay */
+#gameContainer {
+  position: relative;
+  width: 600px;
+  height: 600px;
+}
+
+/* Canvas */
+#mazeCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 600px;
+  height: 600px;
+  background: #111;
+  border-radius: 8px;
+  display: none;
+}
+
+/* Overlay для режиму "Лабіринт у темряві" */
+#darkOverlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  display: none;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(0,0,0,0) 80px,
+    rgba(0,0,0,0.95) 81px
+  );
+  transition: all 0.2s;
+}
+
+/* Правa панель: значок інформації та спливаюче вікно */
+#infoIcon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: #ffcc00;
+  color: #1c1f26;
+  border-radius: 50%;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#infoPopup {
+  position: absolute;
+  bottom: 50px;
+  right: 10px;
+  background: rgba(28,31,38,0.9);
+  color: #ffcc00;
+  padding: 10px;
+  border: 1px solid #ffcc00;
+  border-radius: 4px;
+  font-size: 16px;
+  display: none;
+  max-width: 250px;
+  z-index: 10;
+}
+
+#infoIcon:hover + #infoPopup {
+  display: block;
+}
+
+/* Футер */
+footer {
+  width: 100%;
+  background: #2b2f38;
+  color: #ffcc00;
+  text-align: center;
+  padding: 5px 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  font-size: 12px;
+}
